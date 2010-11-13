@@ -8,3 +8,4 @@ __DATA__
 Masahiro Nagano
 kazeburo {at} gmail.com
 JavaScript::Value::Escape
+XSS
