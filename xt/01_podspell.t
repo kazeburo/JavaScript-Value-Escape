@@ -9,3 +9,6 @@ Masahiro Nagano
 kazeburo {at} gmail.com
 JavaScript::Value::Escape
 XSS
+Str
+unicode
+

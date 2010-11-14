@@ -33,15 +33,37 @@ __END__
 
 =head1 NAME
 
-JavaScript::Value::Escape - Avoid XSS in JavaScript value.
+JavaScript::Value::Escape - Avoid JavaScript value XSS
 
 =head1 SYNOPSIS
 
   use JavaScript::Value::Escape;
 
+  my $escaped = javascript_value_escape(q!&foo"bar'</script>!);
+  # $escaped is "\u0026foo\u0022bar\u0027\u003c\/script\u003e"
+
+  print <<EOF;
+  <script>
+  var param = '$escaped';
+  alert(param);
+  </script>
+  EOF
+
 =head1 DESCRIPTION
 
-JavaScript::Value::Escape is
+To avoid XSS with JavaScript Value, JavaScript::Value::Escape escapes 
+q!"!, q!'!, q!&!, q!<!, q!>!, q!/!, q!\!, qq!\r! and qq!\n! to JavaScript
+unicode characters like "\u5bae".
+
+=head1 EXPORT FUNCTION
+
+=over 4
+
+=item javascript_value_escape($value:Str); Str
+
+Escape a string. 
+
+=back
 
 =head1 AUTHOR
 
