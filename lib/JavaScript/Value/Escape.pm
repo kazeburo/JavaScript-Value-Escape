@@ -42,10 +42,15 @@ JavaScript::Value::Escape - Avoid JavaScript value XSS
   my $escaped = javascript_value_escape(q!&foo"bar'</script>!);
   # $escaped is "\u0026foo\u0022bar\u0027\u003c\/script\u003e"
 
+  my $html_escaped = javascript_value_escape(Text::Xslate::Util::escape_html(q!&foo"bar'</script>!));
+
   print <<EOF;
   <script>
   var param = '$escaped';
   alert(param);
+
+  document.write('$html_escaped');
+
   </script>
   EOF
 
