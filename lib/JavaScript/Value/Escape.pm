@@ -58,8 +58,8 @@ JavaScript::Value::Escape - Avoid JavaScript value XSS
 =head1 DESCRIPTION
 
 To avoid XSS with JavaScript Value, JavaScript::Value::Escape escapes 
-q!"!, q!'!, q!&!, q!<!, q!>!, q!/!, q!\! and control characters to 
-JavaScript unicode characters like "\u0026".
+q!"!, q!'!, q!&!, q!=!, q!-!, q!;!, q!<!, q!>!, q!/!, q!\! and control 
+characters to JavaScript unicode characters like "\u0026".
 
 =head1 EXPORT FUNCTION
 
