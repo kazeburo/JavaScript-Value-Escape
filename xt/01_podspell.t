@@ -11,4 +11,5 @@ JavaScript::Value::Escape
 XSS
 Str
 unicode
-
+UTF
+ascii

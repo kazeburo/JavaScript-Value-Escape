@@ -2,31 +2,32 @@ package JavaScript::Value::Escape;
 
 use strict;
 use warnings;
+use 5.8.1;
 use base qw/Exporter/;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our @EXPORT = qw/javascript_value_escape/;
 
-my $bs = '\\';
 my %e = (
-    q!\\! => $bs,
+    q!\\! => 'u005c',
     q!"! => 'u0022',
     q!'! => 'u0027',
-    q!/! => '/',
     q!<! => 'u003c',
     q!>! => 'u003e',
     q!&! => 'u0026',
-    "\x0D" => "r",
-    "\x0A" => "n",
+    q!=! => 'u003d',
+    q!-! => 'u002d',
+    q!;! => 'u003b',
+    "\x{2028}" => 'u2028',
+    "\x{2029}" => 'u2029',
 );
+map { $e{pack('U',$_)} = sprintf("u%04d",$_) } 0..31;
 
 sub javascript_value_escape {
     my $text = shift;
-    $text =~ s!([\\"'/<>&]|\x0D|\x0A)!${bs}$e{$1}!g;
+    $text =~ s!([\\"'<>&=\-;\x00-\x1f]|\x{2028}|\x{2029})!\\$e{$1}!g;
     return $text;
 }
-
-
 
 1;
 __END__
@@ -57,8 +58,8 @@ JavaScript::Value::Escape - Avoid JavaScript value XSS
 =head1 DESCRIPTION
 
 To avoid XSS with JavaScript Value, JavaScript::Value::Escape escapes 
-q!"!, q!'!, q!&!, q!<!, q!>!, q!/!, q!\!, qq!\r! and qq!\n! to JavaScript
-unicode characters like "\u5bae".
+q!"!, q!'!, q!&!, q!<!, q!>!, q!/!, q!\! and control characters to 
+JavaScript unicode characters like "\u0026".
 
 =head1 EXPORT FUNCTION
 
@@ -66,7 +67,8 @@ unicode characters like "\u5bae".
 
 =item javascript_value_escape($value:Str); Str
 
-Escape a string. 
+Escape a string. The argument of this function must be a flagged UTF-8 string
+(a.k.a. Perl's internal form). 
 
 =back
 

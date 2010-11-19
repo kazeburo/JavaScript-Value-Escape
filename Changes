@@ -1,4 +1,8 @@
 Revision history for Perl extension JavaScript::Value::Escape
 
+0.02    Sat Nov 20 00:35:37 2010
+        - incopatible change.
+        - arguments must be flagged UTF8 string
+
 0.01    Sun Nov 14 00:53:33 2010
         - original version
