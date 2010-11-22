@@ -5,7 +5,7 @@ use warnings;
 use 5.8.1;
 use base qw/Exporter/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 our @EXPORT = qw/javascript_value_escape/;
 
 my %e = (
@@ -18,6 +18,7 @@ my %e = (
     q!=! => 'u003d',
     q!-! => 'u002d',
     q!;! => 'u003b',
+    q!+! => 'u002b',
     "\x{2028}" => 'u2028',
     "\x{2029}" => 'u2029',
 );
@@ -25,7 +26,7 @@ map { $e{pack('U',$_)} = sprintf("u%04d",$_) } (0x00..0x1f,0x7f);
 
 sub javascript_value_escape {
     my $text = shift;
-    $text =~ s!([\\"'<>&=\-;\x00-\x1f\x7f]|\x{2028}|\x{2029})!\\$e{$1}!g;
+    $text =~ s!([\\"'<>&=\-;\+\x00-\x1f\x7f]|\x{2028}|\x{2029})!\\$e{$1}!g;
     return $text;
 }
 
@@ -58,8 +59,8 @@ JavaScript::Value::Escape - Avoid JavaScript value XSS
 =head1 DESCRIPTION
 
 To avoid XSS with JavaScript Value, JavaScript::Value::Escape escapes 
-q!"!, q!'!, q!&!, q!=!, q!-!, q!;!, q!<!, q!>!, q!/!, q!\! and control 
-characters to JavaScript unicode characters like "\u0026".
+q!"!, q!'!, q!&!, q!=!, q!-!, q!+!, q!;!, q!<!, q!>!, q!/!, q!\! and 
+control characters to JavaScript unicode characters like "\u0026".
 
 =head1 EXPORT FUNCTION
 

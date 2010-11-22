@@ -1,5 +1,8 @@
 Revision history for Perl extension JavaScript::Value::Escape
 
+0.03    Tue Nov 23 00:02:29 2010
+        - added '+' for escape
+
 0.02    Sat Nov 20 00:35:37 2010
         - incopatible change.
         - arguments must be flagged UTF8 string
