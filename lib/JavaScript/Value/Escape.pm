@@ -21,11 +21,11 @@ my %e = (
     "\x{2028}" => 'u2028',
     "\x{2029}" => 'u2029',
 );
-map { $e{pack('U',$_)} = sprintf("u%04d",$_) } 0..31;
+map { $e{pack('U',$_)} = sprintf("u%04d",$_) } (0x00..0x1f,0x7f);
 
 sub javascript_value_escape {
     my $text = shift;
-    $text =~ s!([\\"'<>&=\-;\x00-\x1f]|\x{2028}|\x{2029})!\\$e{$1}!g;
+    $text =~ s!([\\"'<>&=\-;\x00-\x1f\x7f]|\x{2028}|\x{2029})!\\$e{$1}!g;
     return $text;
 }
 
