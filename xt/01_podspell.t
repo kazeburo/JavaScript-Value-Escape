@@ -13,3 +13,6 @@ Str
 unicode
 UTF
 ascii
+HTML
+JSON
+
