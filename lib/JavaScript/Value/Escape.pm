@@ -5,8 +5,9 @@ use warnings;
 use 5.8.1;
 use base qw/Exporter/;
 
-our $VERSION = '0.03';
-our @EXPORT = qw/javascript_value_escape/;
+our $VERSION   = '0.03';
+our @EXPORT    = qw/javascript_value_escape/;
+our @EXPORT_OK = qw/js/;
 
 my %e = (
     q!\\! => 'u005c',
@@ -23,6 +24,8 @@ my %e = (
     "\x{2029}" => 'u2029',
 );
 map { $e{pack('U',$_)} = sprintf("u%04d",$_) } (0x00..0x1f,0x7f);
+
+*js = \&javascript_value_escape; # alias
 
 sub javascript_value_escape {
     my $text = shift;
@@ -58,18 +61,26 @@ JavaScript::Value::Escape - Avoid JavaScript value XSS
 
 =head1 DESCRIPTION
 
-To avoid XSS with JavaScript Value, JavaScript::Value::Escape escapes 
-q!"!, q!'!, q!&!, q!=!, q!-!, q!+!, q!;!, q!<!, q!>!, q!/!, q!\! and 
+To avoid XSS with JavaScript Value, JavaScript::Value::Escape escapes
+q!"!, q!'!, q!&!, q!=!, q!-!, q!+!, q!;!, q!<!, q!>!, q!/!, q!\! and
 control characters to JavaScript unicode characters like "\u0026".
 
 =head1 EXPORT FUNCTION
 
 =over 4
 
-=item javascript_value_escape($value:Str); Str
+=item javascript_value_escape($value:Str) :Str
 
 Escape a string. The argument of this function must be a flagged UTF-8 string
-(a.k.a. Perl's internal form). 
+(a.k.a. Perl's internal form).
+
+This is exported by default.
+
+=item js($value :Str) :Str
+
+Alias to C<javascript_value_escape()> for convenience.
+
+This is exported by your request.
 
 =back
 
