@@ -15,4 +15,5 @@ UTF
 ascii
 HTML
 JSON
-
+gfx
+Goro

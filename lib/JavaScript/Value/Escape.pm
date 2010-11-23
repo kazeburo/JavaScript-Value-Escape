@@ -92,6 +92,10 @@ This is exported by your request.
 
 Masahiro Nagano E<lt>kazeburo {at} gmail.comE<gt>
 
+=head1 THANKS TO
+
+Fuji, Goro (gfx)
+
 =head1 SEE ALSO
 
 L<http://subtech.g.hatena.ne.jp/mala/20100222/1266843093> - About XSS caused by buggy JavaScript escaping for HTML script sections (Japanese)

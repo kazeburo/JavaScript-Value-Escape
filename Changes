@@ -1,5 +1,9 @@
 Revision history for Perl extension JavaScript::Value::Escape
 
+0.03    Tue Nov 23 15:41:27 2010
+        - Improve docs (gfx)
+        - Add js() (alias to javascript_value_escape()) to @EXPORT_OK (gfx)
+
 0.03    Tue Nov 23 00:02:29 2010
         - added '+' for escape
 
