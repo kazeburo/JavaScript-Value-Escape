@@ -5,7 +5,7 @@ use warnings;
 use 5.8.1;
 use base qw/Exporter/;
 
-our $VERSION   = '0.03';
+our $VERSION   = '0.04';
 our @EXPORT    = qw/javascript_value_escape/;
 our @EXPORT_OK = qw/js/;
 
