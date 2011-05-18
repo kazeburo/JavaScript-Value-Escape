@@ -1,5 +1,9 @@
 Revision history for Perl extension JavaScript::Value::Escape
 
+0.05    Wed May 18 15:54;42 2011
+        - no changes.
+        - skipping auto_includes in Makefile.PL
+
 0.04    Tue Nov 23 15:41:27 2010
         - Improve docs (gfx)
         - Add js() (alias to javascript_value_escape()) to @EXPORT_OK (gfx)
