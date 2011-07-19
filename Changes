@@ -1,5 +1,8 @@
 Revision history for Perl extension JavaScript::Value::Escape
 
+0.06    Wed Jul 20 00:06:44 2011
+        - checking input text
+
 0.05    Wed May 18 15:54;42 2011
         - no changes.
         - skipping auto_includes in Makefile.PL

@@ -5,7 +5,7 @@ use warnings;
 use 5.8.1;
 use base qw/Exporter/;
 
-our $VERSION   = '0.05';
+our $VERSION   = '0.06';
 our @EXPORT    = qw/javascript_value_escape/;
 our @EXPORT_OK = qw/js/;
 
@@ -29,7 +29,7 @@ map { $e{pack('U',$_)} = sprintf("u%04d",$_) } (0x00..0x1f,0x7f);
 
 sub javascript_value_escape {
     my $text = shift;
-    $text =~ s!([\\"'<>&=\-;\+\x00-\x1f\x7f]|\x{2028}|\x{2029})!\\$e{$1}!g;
+    $text =~ s!([\\"'<>&=\-;\+\x00-\x1f\x7f]|\x{2028}|\x{2029})!\\$e{$1}!g if defined $text;
     return $text;
 }
 
