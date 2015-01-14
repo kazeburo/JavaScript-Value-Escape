@@ -23,7 +23,7 @@ my %e = (
     "\x{2028}" => 'u2028',
     "\x{2029}" => 'u2029',
 );
-map { $e{pack('U',$_)} = sprintf("u%04d",$_) } (0x00..0x1f,0x7f);
+map { $e{pack('U',$_)} = sprintf("u%04x",$_) } (0x00..0x1f,0x7f);
 
 *js = \&javascript_value_escape; # alias
 
