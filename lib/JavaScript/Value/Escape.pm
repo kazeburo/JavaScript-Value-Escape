@@ -62,10 +62,10 @@ JavaScript::Value::Escape - Avoid XSS with JavaScript value interpolation
 =head1 DESCRIPTION
 
 There are a lot of XSS, a security hole typically found in web applications,
-caused by incorrect (or lack of) JavaScript escaping. This module is aimed to
-provide a secure JavaScript escaping to avoid XSS with JavaScript values.
+caused by incorrect (or lack of) JavaScript escaping. This module aims to
+provide secure JavaScript escaping to avoid XSS with JavaScript values.
 
-The escaping routine JavaScript::Value::Escape provides escapes
+The escaping routine JavaScript::Value::Escape provides escapes for
 q!"!, q!'!, q!&!, q!=!, q!-!, q!+!, q!;!, q!<!, q!>!, q!/!, q!\! and
 control characters to JavaScript unicode entities like "\u0026".
 
@@ -101,6 +101,8 @@ Fuji, Goro (gfx)
 L<http://subtech.g.hatena.ne.jp/mala/20100222/1266843093> - About XSS caused by buggy JavaScript escaping for HTML script sections (Japanese)
 
 L<http://blog.nomadscafe.jp/2010/11/htmlscript.html> - Wrote a module (JavaScript::Value::Escape) to escape data for HTML script sections (Japanese)
+
+L<https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet> - Preventing XSS (Cross Site Scripting) (English)
 
 L<RFC4627> - The application/json Media Type for JSON
 
