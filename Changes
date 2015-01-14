@@ -1,5 +1,7 @@
 Revision history for Perl extension JavaScript::Value::Escape
 
+{{$NEXT}}
+
 0.06    Wed Jul 20 00:06:44 2011
         - checking input text
 
